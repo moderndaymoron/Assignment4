@@ -35,9 +35,27 @@ length of the first list is given as the second argument.
 Hint: Use the list function and two helper functions.
 
 Test case:
-       (split '(a b c d e f g) 3)
+(define (Fsplit lis n)
+(cond
+((eq? n 0)'())
+((eq? n 1)(cons (car lis) '()))
+(else (cons(car lis)(Fsplit(cdr lis) (- n 1))))
+)
+)
+
+(define (Ssplit lis n)
+(cond
+((empty? lis) '())
+((eq? n 0) lis)
+(else (Ssplit (cdr lis) (- n 1)))
+)
+)
+
+
+(define (split lis n)
+(list(Fsplit lis n) (Ssplit lis n))
+)
        '((a b c) (d e f g))
-      1
 
 
  2. Scheme (22%)
@@ -87,10 +105,9 @@ and returns a list of three elements. The first element is the character count (
 in the document, the second element is the word count, and the third element is the sentence count.
 
 Test case:
-     (charactersPerSentence '((Hello Mary) (Scheme is so wonderful) (See you later)
+     (statsDocument '((Hello Mary) (Scheme is so wonderful) (See you later)
      (John)))
      '(43 10 4)
-     2
 
 
 3. SML (25%)
@@ -119,7 +136,7 @@ Here is how the successive stages in the reduction might look when f is + and li
 [3,7,-2,5] -> [10,-2,5] -> [8,5] -> 13
 
 Test case:
-reduction op+ [1,3,5,7,9]; valit=25: int reduction op* [1,3,5,7,9]; valit=945: int
+reduction op+ [1,3,5,7,9]; val it = 25: int reduction op* [1,3,5,7,9]; valit=945: int
 
 
 d) (8%) Write the function partition = fn :
