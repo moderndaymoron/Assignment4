@@ -1,8 +1,7 @@
 fun length [] = 0
     | length (n::L) = 1 + length L;
 
-fun findnth n [] = 0
-    | findnth n (a::lis) = if n = 1 
+fun findnth n (a::lis) = if n = 1 
                         then a 
                         else findnth (n-1) lis;
 
